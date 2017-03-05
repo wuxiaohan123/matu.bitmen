@@ -1,0 +1,56 @@
+/*
+
+3.13 输出100以内的所有素数	语言要求：	C++
+编写一个程序，找出1~100中的所有素数。
+
+输入输出格式要求：
+	要求每个数后面都要输出逗号，
+	请不要输出其他字符
+例如：
+输出：2,3,5,
+
+*/
+
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+
+double jiecheng(int);
+double EXP(double, int);
+
+int main()
+{
+	double x = 0.0;
+	int n = 0;
+
+	scanf("%lf %d", &x, &n);
+//	printf_s("%f %d\n", x, n);
+
+	if (n < 0)		//n大于等于0，否则退出
+	{
+		printf("error\n");
+		exit(1);
+	}
+	
+	double s = 0.0;
+	s = EXP(x, n);
+	printf("%f\n", s);
+//	system("pause");
+	return 0;
+}
+
+double jiecheng(int n)	//阶乘函数
+{
+	if (n == 1)
+		return 1;
+	else
+		return n*jiecheng(n - 1);
+}
+
+double EXP(double x, int n)
+{
+	if (n == 0)
+		return 1;
+	else
+		return pow(x, n) / jiecheng(n) + EXP(x, n - 1);
+}
